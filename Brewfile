@@ -1,6 +1,6 @@
 # vim:ft=ruby
 
-tap 'homebrew/bundle'
+# tap 'homebrew/bundle'
 
 if OS.mac?
   tap 'FelixKratz/formulae' # For janky borders
@@ -11,7 +11,7 @@ if OS.mac?
   brew 'borders'                       # add borders to windows
 
   # Applications
-  cask 'ghostty'                       # a better terminal emulator
+  # cask 'ghostty'                       # a better terminal emulator
   cask 'wezterm'                       # a better terminal emulator
   cask '1password/tap/1password-cli'   # 1Password CLI
   cask 'karabiner-elements'            # keyboard customizer
