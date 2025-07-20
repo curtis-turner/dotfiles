@@ -171,3 +171,5 @@ if [[ -x "$(command -v pyenv)" ]]; then
 fi
 
 . "$HOME/.local/bin/env"
+
+eval "$(direnv hook zsh)"
