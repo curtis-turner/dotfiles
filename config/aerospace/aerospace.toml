@@ -57,7 +57,7 @@ inner.horizontal = [ { monitor."Built-in Retina Display" = 5 }, 5  ]
 inner.vertical =   [ { monitor."Built-in Retina Display" = 5 }, 5  ]
 outer.left =       [ { monitor."Built-in Retina Display" = 5 }, 5  ]
 outer.bottom =     [ { monitor."Built-in Retina Display" = 5 }, 5  ]
-outer.top =        [ { monitor."Built-in Retina Display" = 5 }, { monitor.main = 33 }, 10 ]
+outer.top =        [ { monitor."Built-in Retina Display" = 5 }, { monitor.main = 36 }, 5 ]
 outer.right =      [ { monitor."Built-in Retina Display" = 5 }, 5  ]
 
 # 'main' binding mode declaration
