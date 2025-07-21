@@ -1,3 +1,9 @@
+zmodload zsh/zprof
+
+DISABLE_AUTO_UPDATE="true"
+DISABLE_MAGIC_FUNCTIONS="true"
+DISABLE_COMPFIX="true"
+
 export ZSH=$DOTFILES/zsh
 
 source "$ZDOTDIR/.zsh_functions"
@@ -156,19 +162,19 @@ for file in "$ZDOTDIR/.zsh_prompt" "$ZDOTDIR/.zsh_aliases"; do
 done
 
 
-if [[ -x "$(command -v pnpm)" ]]; then
-  export PNPM_HOME="$HOME/Library/pnpm"
-  case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
-fi
+# if [[ -x "$(command -v pnpm)" ]]; then
+#   export PNPM_HOME="$HOME/Library/pnpm"
+#   case ":$PATH:" in
+#     *":$PNPM_HOME:"*) ;;
+#     *) export PATH="$PNPM_HOME:$PATH" ;;
+#   esac
+# fi
 
-if [[ -x "$(command -v pyenv)" ]]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-fi
+# if [[ -x "$(command -v pyenv)" ]]; then
+#   export PYENV_ROOT="$HOME/.pyenv"
+#   [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+#   eval "$(pyenv init -)"
+# fi
 
 . "$HOME/.local/bin/env"
 
