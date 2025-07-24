@@ -1,10 +1,2 @@
--- init.lua
--- Neovim-specific configuration
-
--- Use the nisi config
-
-local nisi = require("nisi")
-nisi.setup({
-  python = true,
-  transparent = true,
-})
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
