@@ -68,10 +68,11 @@ if h.is_dark then
 
   -- and use the custom color scheme
   -- config.color_scheme = "Catppuccin Macchiato"
-  config.color_scheme = "Catppuccin Macchiato"
-  config.set_environment_variables = {
-    THEME_FLAVOUR = "macchiato",
-  }
+  -- config.color_scheme = "Catppuccin Macchiato"
+  -- config.set_environment_variables = {
+  --   THEME_FLAVOUR = "macchiato",
+  -- }
+  config.color_scheme = "rose-pine"
   if fancy then
     config.background = {
       b.get_background(),
@@ -79,11 +80,12 @@ if h.is_dark then
     }
   end
 else
-  config.color_scheme = "Catppuccin Latte"
+  config.color_scheme = "rose-pine-dawn"
+  -- config.color_scheme = "Catppuccin Latte"
   config.window_background_opacity = 1
-  config.set_environment_variables = {
-    THEME_FLAVOUR = "latte",
-  }
+  -- config.set_environment_variables = {
+  --   THEME_FLAVOUR = "latte",
+  -- }
   config.background = {
     b.get_background(),
   }
