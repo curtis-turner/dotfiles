@@ -253,6 +253,11 @@ run = 'move-node-to-workspace S'
 if.app-id = 'com.omnigroup.OmniFocus4'
 run = 'move-node-to-workspace S'
 
+# Utilities
+[[on-window-detected]]
+if.app-id = 'tv.parsec.www'
+run = 'move-node-to-workspace U'
+
 # Zoom
 
 [[on-window-detected]]
