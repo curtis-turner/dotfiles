@@ -9,9 +9,7 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-after-startup-command = [
-  'exec-and-forget borders'
-]
+after-startup-command = ['exec-and-forget borders']
 
 # Start AeroSpace at login
 start-at-login = true
@@ -53,12 +51,16 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
 # Allow for more space on smaller screens
-inner.horizontal = [ { monitor."Built-in Retina Display" = 5 }, 5  ]
-inner.vertical =   [ { monitor."Built-in Retina Display" = 5 }, 5  ]
-outer.left =       [ { monitor."Built-in Retina Display" = 5 }, 5  ]
-outer.bottom =     [ { monitor."Built-in Retina Display" = 5 }, 5  ]
-outer.top =        [ { monitor."Built-in Retina Display" = 5 }, { monitor.main = 36 }, 5 ]
-outer.right =      [ { monitor."Built-in Retina Display" = 5 }, 5  ]
+inner.horizontal = [{ monitor."Built-in Retina Display" = 5 }, 5]
+inner.vertical = [{ monitor."Built-in Retina Display" = 5 }, 5]
+outer.left = [{ monitor."Built-in Retina Display" = 5 }, 5]
+outer.bottom = [{ monitor."Built-in Retina Display" = 5 }, 5]
+outer.top = [
+  { monitor."Built-in Retina Display" = 5 },
+  { monitor.main = 36 },
+  5,
+]
+outer.right = [{ monitor."Built-in Retina Display" = 5 }, 5]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -128,7 +130,7 @@ alt-m = 'workspace M' # Mail
 alt-n = 'workspace N' # Notes
 alt-p = 'workspace P' # Productivity
 alt-t = 'workspace T' # Terminal
-alt-w = 'workspace U' # Utilities
+alt-u = 'workspace U' # Utilities
 alt-z = 'workspace Z' # Screen-sharing/Zoom
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -174,7 +176,10 @@ alt-shift-semicolon = 'mode service'
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
 r = ['flatten-workspace-tree', 'mode main'] # reset layout
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+f = [
+  'layout floating tiling',
+  'mode main',
+] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 q = ['enable toggle'] # Disable window management
 
@@ -258,6 +263,10 @@ run = 'move-node-to-workspace S'
 if.app-id = 'tv.parsec.www'
 run = 'move-node-to-workspace U'
 
+[[on-window-detected]]
+if.app-id = 'com.microsoft.rdc.macos'
+run = 'move-node-to-workspace U'
+
 # Zoom
 
 [[on-window-detected]]
@@ -299,4 +308,3 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.rogueamoeba.audiohijack'
 run = 'layout floating'
-
