@@ -40,7 +40,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/nicknisi/Developer/dotfiles/bin/claude-status-hook PreToolUse"
+            "command": "/Users/cturner/github.com/curtis-turner/dotfiles/bin/claude-status-hook PreToolUse"
           }
         ]
       }
@@ -50,7 +50,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/nicknisi/Developer/dotfiles/bin/claude-status-hook Stop"
+            "command": "/Users/cturner/github.com/curtis-turner/dotfiles/bin/claude-status-hook Stop"
           }
         ]
       }
@@ -60,7 +60,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/nicknisi/Developer/dotfiles/bin/claude-status-hook SubagentStop"
+            "command": "/Users/cturner/github.com/curtis-turner/dotfiles/bin/claude-status-hook SubagentStop"
           }
         ]
       }
@@ -70,7 +70,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/nicknisi/Developer/dotfiles/bin/claude-status-hook Notification"
+            "command": "/Users/cturner/github.com/curtis-turner/dotfiles/bin/claude-status-hook Notification"
           }
         ]
       }
