@@ -143,16 +143,17 @@ alt-shift-6 = 'move-node-to-workspace 6'
 alt-shift-7 = 'move-node-to-workspace 7'
 alt-shift-8 = 'move-node-to-workspace 8'
 alt-shift-9 = 'move-node-to-workspace 9'
-alt-shift-a = 'move-node-to-workspace A'
-alt-shift-b = 'move-node-to-workspace B'
-alt-shift-c = 'move-node-to-workspace C'
-alt-shift-e = 'move-node-to-workspace E'
-alt-shift-m = 'move-node-to-workspace M'
-alt-shift-n = 'move-node-to-workspace N'
-alt-shift-p = 'move-node-to-workspace P'
-alt-shift-t = 'move-node-to-workspace T'
-alt-shift-u = 'move-node-to-workspace U'
-alt-shift-z = 'move-node-to-workspace Z'
+alt-shift-0 = 'move-node-to-workspace 0'
+# alt-shift-a = 'move-node-to-workspace A'
+# alt-shift-b = 'move-node-to-workspace B'
+# alt-shift-c = 'move-node-to-workspace C'
+# alt-shift-e = 'move-node-to-workspace E'
+# alt-shift-m = 'move-node-to-workspace M'
+# alt-shift-n = 'move-node-to-workspace N'
+# alt-shift-p = 'move-node-to-workspace P'
+# alt-shift-t = 'move-node-to-workspace T'
+# alt-shift-u = 'move-node-to-workspace U'
+# alt-shift-z = 'move-node-to-workspace Z'
 
 alt-shift-f = 'fullscreen'
 
@@ -197,81 +198,61 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.MobileSMS'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace C'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = 'move-node-to-workspace S'
+run = 'move-node-to-workspace 3'
 
 ## Development
 
 [[on-window-detected]]
 if.app-id = 'com.github.wez.wezterm'
-run = 'move-node-to-workspace T'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace T'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.VSCode'
-run = 'move-node-to-workspace E'
+run = 'move-node-to-workspace 2'
 
 ## Browsers
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace B'
+run = 'move-node-to-workspace 1'
 
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
-run = 'move-node-to-workspace B'
+run = 'move-node-to-workspace 1'
 
 # Productivity
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace S'
-
-[[on-window-detected]]
-if.app-id = 'notion.id'
-run = 'move-node-to-workspace S'
-
-[[on-window-detected]]
-if.app-id = 'com.mimestream.Mimestream'
-run = 'move-node-to-workspace S'
-
-[[on-window-detected]]
-if.app-id = 'com.linear'
-run = 'move-node-to-workspace S'
-
-[[on-window-detected]]
-if.app-id = 'md.obsidian'
-run = 'move-node-to-workspace S'
-
-[[on-window-detected]]
-if.app-id = 'com.omnigroup.OmniFocus4'
-run = 'move-node-to-workspace S'
+run = 'move-node-to-workspace 5'
 
 # Utilities
 [[on-window-detected]]
 if.app-id = 'tv.parsec.www'
-run = 'move-node-to-workspace U'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.microsoft.rdc.macos'
-run = 'move-node-to-workspace U'
+run = 'move-node-to-workspace 6'
 
 # Zoom
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-run = 'move-node-to-workspace Z'
+run = 'move-node-to-workspace 4'
 
 ## Floaters
 
@@ -280,10 +261,6 @@ if.during-aerospace-startup = false
 if.app-id = 'app.zen-browser.zen'
 if.window-title-regex-substring = 'Picture-in-Picture'
 run = ['layout floating']
-
-[[on-window-detected]]
-if.app-id = 'ch.protonvpn.mac'
-run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
@@ -295,16 +272,4 @@ run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.FaceTime'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.macpaw.CleanMyMac-setapp'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.apple.ScreenContinuity'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-id = 'com.rogueamoeba.audiohijack'
 run = 'layout floating'

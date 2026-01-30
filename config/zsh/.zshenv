@@ -1,2 +1,17 @@
 
 alias assume=". assume"
+# zerobrew
+export ZEROBREW_DIR=/Users/cturner/.zerobrew
+export ZEROBREW_BIN=/Users/cturner/.local/bin
+export PKG_CONFIG_PATH="/opt/zerobrew/prefix/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+_zb_path_append() {
+    local argpath="$1"
+    case ":${PATH}:" in
+        *:"$argpath":*) ;;
+        *) export PATH="$argpath:$PATH" ;;
+    esac;
+}
+_zb_path_append /opt/zerobrew/prefix/bin
+
+# zerobrew
+export PATH="/opt/zerobrew/bin:$PATH"

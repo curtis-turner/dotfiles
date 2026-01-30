@@ -1,5 +1,3 @@
-zmodload zsh/zprof
-
 DISABLE_AUTO_UPDATE="true"
 DISABLE_MAGIC_FUNCTIONS="true"
 DISABLE_COMPFIX="true"
@@ -12,9 +10,8 @@ source "$ZDOTDIR/.zsh_functions"
 # Configuration
 ########################################################
 
-# initialize autocomplete
-autoload -U compinit add-zsh-hook
-compinit
+# initialize autocomplete (actual compinit call is in .zsh_functions with caching)
+autoload -U add-zsh-hook
 
 prepend_path /usr/local/opt/grep/libexec/gnubin
 prepend_path /usr/local/sbin
@@ -102,9 +99,7 @@ zfetch zsh-users/zsh-autosuggestions
 zfetch grigorii-zander/zsh-npm-scripts-autocomplete
 zfetch Aloxaf/fzf-tab
 
-if [[ -x "$(command -v fnm)" ]]; then
-    eval "$(fnm env --use-on-cd)"
-fi
+(( $+commands[fnm] )) && cached_eval "fnm" "fnm env --use-on-cd"
 
 [[ -e ~/.terminfo ]] && export TERMINFO_DIRS=~/.terminfo:/usr/share/terminfo
 
@@ -112,40 +107,38 @@ fi
 # Setup
 ########################################################
 
-if [ -x "$(command -v fzf)" ]; then
-  export FZF_DEFAULT_COMMAND='fd --type f'
-  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-  export FZF_DEFAULT_OPTS="--color bg:-1,bg+:-1,fg:-1,fg+:#feffff,hl:#993f84,hl+:#d256b5,info:#676767,prompt:#676767,pointer:#676767"
-  source <(fzf --zsh)
+if (( $+commands[fzf] )); then
+    export FZF_DEFAULT_COMMAND='fd --type f'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_DEFAULT_OPTS="--color bg:-1,bg+:-1,fg:-1,fg+:#feffff,hl:#993f84,hl+:#d256b5,info:#676767,prompt:#676767,pointer:#676767"
+    cached_eval "fzf" "fzf --zsh"
 fi
 
-# add color to man pages
+# add color to man pages (hardcoded escape sequences to avoid tput subprocess overhead)
 export MANROFFOPT='-c'
-export LESS_TERMCAP_mb=$(tput bold; tput setaf 2)
-export LESS_TERMCAP_md=$(tput bold; tput setaf 6)
-export LESS_TERMCAP_me=$(tput sgr0)
-export LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4)
-export LESS_TERMCAP_se=$(tput rmso; tput sgr0)
-export LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7)
-export LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
-export LESS_TERMCAP_mr=$(tput rev)
-export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_mb=$'\e[1;32m'      # bold green (blink)
+export LESS_TERMCAP_md=$'\e[1;36m'      # bold cyan (bold)
+export LESS_TERMCAP_me=$'\e[0m'         # reset
+export LESS_TERMCAP_so=$'\e[1;33;44m'   # bold yellow on blue (standout)
+export LESS_TERMCAP_se=$'\e[0m'         # reset (end standout)
+export LESS_TERMCAP_us=$'\e[1;4;37m'    # bold underline white (underline)
+export LESS_TERMCAP_ue=$'\e[0m'         # reset (end underline)
+export LESS_TERMCAP_mr=$'\e[7m'         # reverse
+export LESS_TERMCAP_mh=$'\e[2m'         # dim
 
 # prefer zoxide over z.sh
-if [[ -x "$(command -v zoxide)" ]]; then
-    eval "$(zoxide init zsh --hook pwd)"
-else
-  # source z.sh if it exists
-  zpath="$(brew --prefix)/etc/profile.d/z.sh"
-  if [ -f "$zpath" ]; then
-      source "$zpath"
-  fi
+if (( $+commands[zoxide] )); then
+    cached_eval "zoxide" "zoxide init zsh --hook pwd"
+elif [[ -f /opt/homebrew/etc/profile.d/z.sh ]]; then
+    source /opt/homebrew/etc/profile.d/z.sh
+elif [[ -f /usr/local/etc/profile.d/z.sh ]]; then
+    source /usr/local/etc/profile.d/z.sh
 fi
 
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
+# Detect which `ls` flavor is in use (GNU vs BSD)
+if [[ -x /opt/homebrew/bin/gls ]] || [[ -x /usr/local/bin/gls ]]; then
     colorflag="--color"
-else # macOS `ls`
+else
     colorflag="-G"
 fi
 
@@ -163,6 +156,8 @@ done
 
 . "$HOME/.local/bin/env"
 
-eval "$(direnv hook zsh)"
-
-eval "$(/Users/cturner/.local/bin/mise activate zsh)"
+# mise: use shims for fast startup, but activate on chpwd when mise.toml exists
+if (( $+commands[mise] )); then
+    cached_eval "mise" "mise activate zsh --shims"
+    chpwd_functions+=(_mise_chpwd_hook)
+fi
